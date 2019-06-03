@@ -7,3 +7,8 @@
     width: 400px;
     
 }
+
+h1:hover {
+    transition: 1s;
+    font-size: 32px;
+}

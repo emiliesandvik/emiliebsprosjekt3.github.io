@@ -98,83 +98,90 @@
          
         <body>
             <form id="skjema">
-             <input type="text" id="inpSendar"required
-            placeholder="kven er du?">
-             <input type="text" id="inpMeining"required
-            placeholder="kva seie du?">
-             <button type="submit"
-            class="button">OK</button>
-            
-            </form>  
-            <article id="txtMeldingar"></article>
-            
-            
-<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
 
+<input type="text" id="inpAvsender" required placeholder="Hvem er du?">
+
+<input type="text" id="inpMening" required placeholder="Hva sier du?">
+
+<button type="submit" class="button">OK</button>
+
+</form>
+
+<article id="txtMeldinger"></article>
+            
+            
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
 
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyBfinWKSQ-0xjtUPuIRNRXFuCjrnbki-es",
-    authDomain: "suberhat.firebaseapp.com",
-    databaseURL: "https://suberhat.firebaseio.com",
-    projectId: "suberhat",
-    storageBucket: "suberhat.appspot.com",
-    messagingSenderId: "626362118301",
-    appId: "1:626362118301:web:0f3b63d8113daf58"
+    apiKey: "AIzaSyCa0PPhqdA5zgZmXmExFvJPtXF6n98NNTE",
+    authDomain: "prosjekt3-6b48f.firebaseapp.com",
+    databaseURL: "https://prosjekt3-6b48f.firebaseio.com",
+    projectId: "prosjekt3-6b48f",
+    storageBucket: "prosjekt3-6b48f.appspot.com",
+    messagingSenderId: "410214389006",
+    appId: "1:410214389006:web:66cae2d0f22d627b"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
-            
-   <script>
+<script>
+
 let database = firebase.database();
+
 let meldinger = database.ref("meldinger");
+
 let skjema = document.getElementById("skjema");
+
 let inpAvsender = document.getElementById("inpAvsender");
+
 let inpMening = document.getElementById("inpMening");
+
 let txtMeldinger = document.getElementById("txtMeldinger");
+
 function visMelding(snapshot) {
+
 let melding = snapshot.val();
+
 let meldingTekst = `<p>
+
 <b>${melding.avsender}: </b>
+
 <i>${melding.tekst}</i>
+
 </p>`;
+
 txtMeldinger.innerHTML = txtMeldinger.innerHTML + meldingTekst;
+
 }
-    
+
 function regNyMelding(evt) {
+
 evt.preventDefault();
+
 let nyMelding = {
+
 avsender: inpAvsender.value,
+
 tekst: inpMening.value
+
 };
-    
+
 meldinger.push(nyMelding);
+
 inpMening.value = "";
+
 }
-    
+
 meldinger.on("child_added", visMelding);
+
 skjema.onsubmit = regNyMelding;
-    
-  let txtMeldingar=dokoment.getElementByld("txtMeldingar");
-     let database=firebase.database();
-    let nyMelding={
-        "sendar":"Meg"
-        "tekst":"Hei
-        
-    };
-    
-    meldingar.push(nyMelding);
-    funcion visMelding(snapshot){
-        var melding=snapshot.val();
-        txtMeldingar.innerHTML += `<p>${melding.sendar}seier
-        ${melding.tekst}</p>`;
-        
-    }
-    
-        meldingar.no("child_added",visMelding);
-                 
+
 </script>
     
   
