@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang=¨no¨>
+    <head>
+        <meta charset=UTF-8¨>
+        <title>Tryggleik og regelverk</title>
+       <link rel="stylesheet" href="prosjekt3.css">
+    <header>
+       <nav>
+           <a href="Prosjekt3.html" class="heim">Forside</a>
+           <a href="side1.html">Risikoen for angrep aukar</a>
+           <a href="side2.html">Informasjonstryggleik</a>
+           <a href="side3.html">Tryggleik og personvern</a>
+           <a href="side4.html">Regelverk og chat</a>
+          
+           </nav>
+        </header>
+        <main>
+    
+     <section style="width: 90%; margin-left: 20px; margin-right: 20px; background-color: whitesmoke; min-height: 650px; padding: 50px; border-radius: 2px;">               
+            
+         <style>
+       body{
+           color:black;
+           
+       }
+       h1{
+         font-size:22px;
+         color:steelblue;
+        text-shadow: 2px 3px 0 lightgray;
+           
+       }
+       h2{
+           font-size: 18px;
+           color:black;
+       }
+       p{
+           font-family: Georgia;
+           font-size: 14px;
+           color: black;
+           line-height: 1.5;
+           margin-bottom: 20px;
+           
+       }
+   
+   
+            </style>
+         
+               
+           
+           
+          <h1>Regelverk og chat</h1>  
+            
+            <p>I Noreg har vi lovar og reglar rundt oss i samfunna. Dei legge rette til at vi får ei god utvikling og framtid. Noko som er nytt dei siste ti åra er internett, og informasjonsteknologi som kan vere rett og vanskeleg. Det er også reglar for nett området, de skal også følgjast rett. Nokon av reglene er eigene og dei haldast til det teknologiske området.</p>
+           
+           <p>I dei fleste datasystem ligg det personopplysningar for personar og gruppar. Det viser kven som tilhøyre og kva rettigheter vi har. Personvernen rundt dette gjer at vi sjølv har rett til å velje, vite og ha kontroll på kva som skjer med eiga data. Ulike gruppar har ulike informasjon. Som for eksempel helsesektoren. I dei fleste persondata behandlar dei opplysninga på sikker måte. </p>
+            
+                  
+                  
+    <style>
+    nav{ 
+        background-color:darkturquoise;
+        display:grid;
+        grid-template-columns:auto repeat(4,1fr);
+        align-items:center;
+        margin-bottom:10px;
+        }
+        nav a{
+            
+            padding-left:100px;
+            padding-left:100px;
+            color:white;
+      } 
+        nav .heim{
+            background-color:black;
+            font-weight:800;
+            font-size:32px;
+            padding:10px;
+        }
+            </style>   
+            
+           <h1>Chat:</h1>
+            <img src="pc.jpg" width="600" height="275">
+          
+            
+        <style>
+            body{
+                margin: 0;
+                min-height: 80vh;
+                display: grid;
+                grid-auto-rows: 240px 1fr 240px;
+                
+            }
+            header{background-color: white}
+            main{background-color: lightseagreen}
+            footer{background-color: white}
+            </style>
+               
+         
+        <body>
+            <form id="skjema">
+             <input type="text" id="inpSendar"required
+            placeholder="kven er du?">
+             <input type="text" id="inpMeining"required
+            placeholder="kva seie du?">
+             <button type="submit"
+            class="button">OK</button>
+            
+            </form>  
+            <article id="txtMeldingar"></article>
+            
+            
+<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBfinWKSQ-0xjtUPuIRNRXFuCjrnbki-es",
+    authDomain: "suberhat.firebaseapp.com",
+    databaseURL: "https://suberhat.firebaseio.com",
+    projectId: "suberhat",
+    storageBucket: "suberhat.appspot.com",
+    messagingSenderId: "626362118301",
+    appId: "1:626362118301:web:0f3b63d8113daf58"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+            
+   <script>
+let database = firebase.database();
+let meldinger = database.ref("meldinger");
+let skjema = document.getElementById("skjema");
+let inpAvsender = document.getElementById("inpAvsender");
+let inpMening = document.getElementById("inpMening");
+let txtMeldinger = document.getElementById("txtMeldinger");
+function visMelding(snapshot) {
+let melding = snapshot.val();
+let meldingTekst = `<p>
+<b>${melding.avsender}: </b>
+<i>${melding.tekst}</i>
+</p>`;
+txtMeldinger.innerHTML = txtMeldinger.innerHTML + meldingTekst;
+}
+    
+function regNyMelding(evt) {
+evt.preventDefault();
+let nyMelding = {
+avsender: inpAvsender.value,
+tekst: inpMening.value
+};
+    
+meldinger.push(nyMelding);
+inpMening.value = "";
+}
+    
+meldinger.on("child_added", visMelding);
+skjema.onsubmit = regNyMelding;
+    
+  let txtMeldingar=dokoment.getElementByld("txtMeldingar");
+     let database=firebase.database();
+    let nyMelding={
+        "sendar":"Meg"
+        "tekst":"Hei
+        
+    };
+    
+    meldingar.push(nyMelding);
+    funcion visMelding(snapshot){
+        var melding=snapshot.val();
+        txtMeldingar.innerHTML += `<p>${melding.sendar}seier
+        ${melding.tekst}</p>`;
+        
+    }
+    
+        meldingar.no("child_added",visMelding);
+                 
+</script>
+    
+  
+   <style>
+       body{
+           color:black;
+           
+       }
+       h1{
+         font-size:22px;
+         color:steelblue;
+        text-shadow: 2px 3px 0 lightgray;
+           
+       }
+       h2{
+           font-size: 18px;
+           color:black;
+       }
+       p{
+           font-family: Georgia;
+           font-size: 14px;
+           color: black;
+           line-height: 1.5;
+           margin-bottom: 20px;
+           
+       }
+   
+       #skjema{
+           margin-top: 50px;
+       }
+          
+       #txtMeldinger{
+           
+    background-color: #b3bcf8;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    min-height: 300px; 
+    padding: 10px;
+    margin-top: 10px;
+           
+       }
+        </style>
+            
+ 
+        
+        <style>
+    nav{ 
+        background-color:darkturquoise;
+        display:grid;
+        grid-template-columns:auto repeat(4,1fr);
+        align-items:center;
+        margin-bottom:10px;
+        }
+        nav a{
+            
+            padding-left:100px;
+            padding-left:100px;
+            color:white;
+      } 
+        nav .heim{
+            background-color:black;
+            font-weight:800;
+            font-size:32px;
+            padding:10px;
+        }
+            </section> 
+            </style>   
+
+ 
+              
+            
